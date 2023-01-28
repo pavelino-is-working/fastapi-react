@@ -4,7 +4,7 @@ import pydantic as _pydantic
 
 
 class _UserBase(_pydantic.BaseModel):
-    _username: str
+    username: str
 
 
 class UserCreate(_UserBase):
@@ -13,11 +13,13 @@ class UserCreate(_UserBase):
     class Config:
         orm_mode = True
 
+
 class User(_UserBase):
     id: int
 
     class Config:
         orm_mode = True
+
 
 class _AppointmentBase(_pydantic.BaseModel):
     _date: datetime.datetime
@@ -26,6 +28,7 @@ class _AppointmentBase(_pydantic.BaseModel):
 class AppointmentCreate(_AppointmentBase):
     pass
 
+
 class Appointment(_AppointmentBase):
     id: int
     owner_id: int
@@ -33,5 +36,3 @@ class Appointment(_AppointmentBase):
 
     class Config:
         orm_mode = True
-
-

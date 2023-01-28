@@ -13,7 +13,7 @@ class User(_database.Base):
     email = _sql.Column(_sql.String, default="")
     username = _sql.Column(_sql.String, unique=True)
     hashed_password = _sql.Column(_sql.String)
-    color = _sql.Column(_sql.String)
+    color = _sql.Column(_sql.String, default="")
     appointments = _orm.relationship("Appointment", back_populates="owner")
 
     def verify_password(self, password: str):

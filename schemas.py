@@ -22,7 +22,7 @@ class User(_UserBase):
 
 
 class _AppointmentBase(_pydantic.BaseModel):
-    _date: datetime.datetime
+    date: datetime.datetime
 
 
 class AppointmentCreate(_AppointmentBase):
@@ -32,7 +32,7 @@ class AppointmentCreate(_AppointmentBase):
 class Appointment(_AppointmentBase):
     id: int
     owner_id: int
-    color: str
 
     class Config:
         orm_mode = True
+

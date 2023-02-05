@@ -7,7 +7,6 @@ import passlib.hash as _hash
 import database as _database
 
 
-
 class User(_database.Base):
     __tablename__ = "users"
     id = _sql.Column(_sql.Integer, primary_key=True, index=True)

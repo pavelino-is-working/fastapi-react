@@ -68,3 +68,7 @@ async def update_appointment(appointment_id: int,
                              db: _orm.Session = _fastapi.Depends(_services.get_db)):
     await _services.update_appointment(appointment_id=appointment_id, appointment=appointment, user=user, db=db)
     return {"message", "Successfully Updated"}
+
+@app.get("/api")
+async def root():
+    return {"message": "Awesome Calendar schedueler I guess"}

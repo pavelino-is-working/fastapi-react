@@ -34,6 +34,7 @@ async def create_user(user: _schemas.UserCreate, db: _orm.Session):
     db.add(user_obj)
     db.commit()
     db.refresh(user_obj)
+
     return user_obj
 
 
@@ -47,8 +48,11 @@ async def authentificate_user(username: str, password: str, db: _orm.Session):
 
 
 async def create_token(user: _models.User):
+    print("waypoint1")
     user_obj = _schemas.User.from_orm(user)
+    print("waypoint2")
     token = _jwt.encode(user_obj.dict(), JWT_SECRET)
+    print("waypoint3")
     return dict(access_token=token, token_type="bearer")
 
 

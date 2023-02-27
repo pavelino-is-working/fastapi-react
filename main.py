@@ -9,14 +9,14 @@ app = _fastapi.FastAPI()
 
 
 @app.post("/api/users")
-async def create_user(user: _schemas.UserCreate, db: _orm.Session = _fastapi.Depends(_services.get_db)):
+async def create_user(
+    user: _schemas.UserCreate, db: _orm.Session = _fastapi.Depends(_services.get_db)):
     db_user = await _services.get_user_by_username(user.username, db)
 
     if db_user:
         raise _fastapi.HTTPException(status_code=400, detail="Username already in use")
     user = await _services.create_user(user, db)
-
-    return _services.create_token(user)
+    return await _services.create_token(user)
 
 
 @app.post("/api/token")

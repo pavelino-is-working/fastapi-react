@@ -1,9 +1,11 @@
-import React, {useState, useEffect} from "react";
+import React, {useContext, useState, useEffect} from "react";
 import Register from "./components/Register"
+import Header from "./components/Header"
+import { UserContext } from "./context/UserContext"
 
 const App = () => {
   const [message, setMessage] = useState("");
-
+  const [token] = useContext(UserContext);
   const getWelcomeMessage = async () => {
     const requestOptions = {
         method: "GET",
@@ -25,11 +27,22 @@ const App = () => {
   getWelcomeMessage();
   }, []);
   return (
-  <div>
-  <h1>{ message }</h1>
-  <Register />
+  <>
+  <Header title={message} />
+  <div className="columns">
+    <div className="column"></div>
+    <div className="column m-5 is-two-thirds">
+        { !token ?(
+            <div className="columns">
+            <Register/> <p>Login</p>
+            </div>
+        ) : (
+            <p>Calendar</p>
+        )}
+    </div>
+    <div className="column"></div>
   </div>
-
+    </>
   );
 }
 

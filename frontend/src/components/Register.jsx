@@ -15,11 +15,9 @@ const Register = () =>{
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify({username: username, hashed_password: password })
         };
-        console.log(requestOptions)
         const response = await fetch("/api/users", requestOptions);
-        console.log(response)
         const data = await response.json();
-        console.log(data)
+
         if(!response.ok){
             setErrorMessage(data.detail);
         } else {

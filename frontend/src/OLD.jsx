@@ -3,8 +3,10 @@ import Register from "./components/Register";
 import Header from "./components/Header";
 import Login from "./components/Login";
 import { UserContext } from "./context/UserContext";
+import {getMonth} from './util';
 
 const App = () => {
+  console.table(getMonth())
   const [message, setMessage] = useState("");
   const [token] = useContext(UserContext);
   const getWelcomeMessage = async () => {

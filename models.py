@@ -24,5 +24,8 @@ class Appointment(_database.Base):
     __tablename__ = "appointments"
     id = _sql.Column(_sql.Integer, primary_key=True, index=True)
     owner_id = _sql.Column(_sql.Integer, _sql.ForeignKey("users.id"))
-    date = _sql.Column(_sql.DATETIME)
+    day = _sql.Column(_sql.Integer)
+    title = _sql.Column(_sql.String, default="")
+    label = _sql.Column(_sql.String, default="")
+    description = _sql.Column(_sql.String, default="")
     owner = _orm.relationship("User", back_populates="appointments")

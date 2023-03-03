@@ -103,7 +103,10 @@ async def delete_appointment(user: _schemas.User, db: _orm.Session, appointment_
 
 async def update_appointment(user: _schemas.User, db: _orm.Session, appointment_id: int, appointment: _schemas.AppointmentCreate):
     appointment_db = await _appointment_selector(user=user, db=db, appointment_id=appointment_id)
-    appointment_db.date = appointment.date
+    appointment_db.title = appointment.title
+    appointment_db.label = appointment.label
+    appointment_db.description = appointment.description
+    appointment_db.day = appointment.day
 
     db.commit()
     db.refresh(appointment_db)

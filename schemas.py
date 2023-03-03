@@ -22,8 +22,11 @@ class User(_UserBase):
 
 
 class _AppointmentBase(_pydantic.BaseModel):
-    date: datetime.datetime
-
+    title: str
+    label: str
+    description: str
+    day: int
+    
 
 class AppointmentCreate(_AppointmentBase):
     pass

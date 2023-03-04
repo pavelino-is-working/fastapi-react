@@ -29,7 +29,7 @@ const App = () => {
     {showEventModal && <EventModel />  }
     <Header title={"Noice"} />
     { !token ?(
-            <div className="grid grid-cols-2">
+            <div className="grid justify-center flex grid-cols-2">
             <Register/> <Login />
             </div>
         ) : (
